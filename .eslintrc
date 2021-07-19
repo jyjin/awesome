@@ -1,0 +1,74 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "globals": {
+    "process": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "rules": {
+    "consistent-return": 2,
+    "indent"           : [1, 2],
+    "semi"             : [1, "always"],
+    "space-unary-ops"  : 2,
+    "react/no-deprecated": 0,
+    "no-console": 0,
+    "no-unused-vars": 1,
+    "no-extra-parens": 2,
+    "default-case": 2,
+    "dot-location": 2,
+    "eqeqeq": 2,
+    "no-else-return": 2,
+    "no-eq-null": 2,
+    "no-extra-label": 2,
+    "no-loop-func": 2,
+    "require-await": 2,
+    "no-undef-init": 2,
+    "no-use-before-define": 2,
+    "array-bracket-newline": ["error", { "multiline": true, "minItems": 3 }],
+    "array-element-newline": ["error", { "multiline": true, "minItems": 3 }],
+    "no-nested-ternary": 2,
+    "curly": 2
+  },
+  "plugins": [
+    "react"
+  ],
+  "settings": {
+    "react": {
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "version": "detect",
+      "flowVersion": "0.53" // Flow version
+    },
+    "propWrapperFunctions": [
+      "forbidExtraProps",
+      {
+        "property": "freeze",
+        "object": "Object"
+      },
+      {
+        "property": "myFavoriteWrapper"
+      }
+    ],
+    "linkComponents": [
+      "Hyperlink",
+      {
+        "name": "Link",
+        "linkAttribute": "to"
+      }
+    ]
+  }
+}
