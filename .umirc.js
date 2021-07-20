@@ -7,6 +7,9 @@ export default defineConfig({
   mfsu: {},
   dynamicImport: {},
   fastRefresh: {},
+  history: {
+    type: 'hash',
+  },
   routes: [{
     path: '/',
     component: '@/layouts/index',
