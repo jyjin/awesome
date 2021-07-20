@@ -1,33 +1,28 @@
-import { Provider } from 'mobx-react'
+import { Provider } from 'mobx-react';
 import { Layout } from 'antd';
 import * as intls from 'react-intl';
-import * as locale from '@/locale'
+import * as locale from '@/locale';
 import { SideMenu } from '@/layouts/menu';
 import { Header } from '@/layouts/header';
-import './index.less'
+import './index.less';
 import { useState } from 'react';
 
 const { Content, Footer } = Layout;
 const { IntlProvider } = intls;
 const globalProps = {
   locale: 'zh',
-  author: 'jyjin'
+  author: 'jyjin',
 };
 
-const Index = props => {
-
+const Index = (props) => {
   const [localeLang, setLocaleLang] = useState('zh');
   const changeLocale = (value) => {
     globalProps.locale = value;
     setLocaleLang(value);
-  }
+  };
 
   return (
-    <Provider
-      className='provider'
-      global={globalProps}
-      intls={intls}
-    >
+    <Provider className="provider" global={globalProps} intls={intls}>
       <IntlProvider
         messages={locale[localeLang]}
         locale={localeLang}
@@ -39,17 +34,26 @@ const Index = props => {
           {/* 菜单 */}
           <SideMenu />
           {/* 页面 */}
-          <Content style={{ margin: '24px 16px 0' }}>
-            <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
+          <Content>
+            <Content
+              style={{
+                margin: '24px 16px 0',
+                minHeight: 'calc(100vh - 60px - 70px - 32px)',
+              }}
+            >
               {props.children}
-              <Footer style={{ textAlign: 'center' }}>Developing ©2021 Created by Ant Jyjin</Footer>
-            </div>
+            </Content>
+            <Footer style={{ textAlign: 'center' }}>
+              Copyright ©2021 古金. All rights reserved. Created by Awesome
+              JyJin
+            </Footer>
+            {/* </div> */}
           </Content>
         </Layout>
       </IntlProvider>
     </Provider>
   );
-}
+};
 
 export default Index;
 
@@ -62,7 +66,6 @@ export default Index;
 //       lan: 'zh'
 //     }
 //   }
-
 
 //   onChange(value) {
 //     this.setState({
@@ -114,8 +117,6 @@ export default Index;
 //     );
 //   }
 // }
-
-
 
 // intl API:
 // https://formatjs.io/docs/intl
