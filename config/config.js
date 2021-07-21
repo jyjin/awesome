@@ -4,9 +4,11 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
-  mfsu: {},
-  dynamicImport: {},
-  fastRefresh: {},
+  // mfsu: {},
+  dynamicImport: {
+    loading: '@/components/loading/Loading',
+  },
+  // fastRefresh: {},
   history: {
     type: 'hash',
   },

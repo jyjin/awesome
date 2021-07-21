@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import { JsonViewer } from '@/components';
+import { JsonViewer, Loading } from '@/components';
 import axios from 'axios';
 import classNames from 'classnames';
 import st from './index.less';
@@ -92,6 +92,7 @@ export default class Index extends React.Component {
         <br />
         <JsonViewer json={this.state.menuData} />
         <JsonViewer json={this.state.data} />
+        <Loading tip="拼命加载中..." />
       </div>
     );
   }

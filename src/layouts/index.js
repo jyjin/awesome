@@ -4,8 +4,9 @@ import * as intls from 'react-intl';
 import * as locale from '@/locale';
 import { SideMenu } from '@/layouts/menu';
 import { Header } from '@/layouts/header';
-import './index.less';
 import { useState } from 'react';
+import st from './index.less';
+import classNames from 'classnames';
 
 const { Content, Footer } = Layout;
 const { IntlProvider } = intls;
@@ -21,6 +22,8 @@ const Index = (props) => {
     setLocaleLang(value);
   };
 
+  const cls = classNames(st['content']);
+
   return (
     <Provider className="provider" global={globalProps} intls={intls}>
       <IntlProvider
@@ -35,19 +38,12 @@ const Index = (props) => {
           <SideMenu />
           {/* 页面 */}
           <Content>
-            <Content
-              style={{
-                margin: '24px 16px 0',
-                minHeight: 'calc(100vh - 60px - 70px - 32px)',
-              }}
-            >
-              {props.children}
-            </Content>
+            <Content className={cls}> {props.children} </Content>
             <Footer style={{ textAlign: 'center' }}>
+              {' '}
               Copyright ©2021 古金. All rights reserved. Created by Awesome
               JyJin
             </Footer>
-            {/* </div> */}
           </Content>
         </Layout>
       </IntlProvider>

@@ -4,7 +4,7 @@ import st from './index.less';
 
 const JsonViewer = ({ json }) => {
   if (!json) {
-    console.log("[ JSON Viewer ] == 'json' shouldn't be null");
+    console.warn("[ JSON Viewer ] == 'json' shouldn't be null");
     return null;
   }
 
@@ -13,7 +13,7 @@ const JsonViewer = ({ json }) => {
 };
 
 JsonViewer.propTypes = {
-  json: PropTypes.oneOf([PropTypes.string]),
+  json: PropTypes.string,
 };
 
 export default JsonViewer;
