@@ -51,4 +51,18 @@ export default [
       },
     ],
   },
+  {
+    id: 3,
+    path: '/react-dnd',
+    name: 'react-dnd',
+    icon: 'appstore',
+    children: [
+      {
+        id: 31,
+        path: '/react-dnd',
+        name: 'react-dnd 拖拽',
+        icon: 'drag',
+      },
+    ],
+  },
 ];
