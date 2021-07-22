@@ -9,10 +9,7 @@ export default [
       { path: '/me', component: '@/pages/me/index' },
       { path: '/inject', component: '@/pages/inject/index' },
       { path: '/react-dnd', component: '@/pages/react-dnd/index' },
-      {
-        path: '/content-download',
-        component: '@/pages/content-download/index',
-      },
+      { path: '/content-download', component: '@/pages/content-download/index' },
       { path: '/ggeditor', component: '@/pages/ggeditor/index' },
     ],
   },
