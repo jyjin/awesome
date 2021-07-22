@@ -1,0 +1,83 @@
+@import '../../styles/index.less';
+
+@width: 260px;
+
+.lc {
+  &-header {
+    display: flex;
+    height: 0.54rem;
+    width: 100%;
+    background: @gray;
+    border-bottom: 0.01rem solid @border;
+    padding: 0;
+
+    &-left {
+      display: flex;
+      align-items: center;
+      width: @width;
+      height: 100%;
+      padding: 0.1rem 0.2rem;
+
+      h1 {
+        margin: 0;
+      }
+    }
+
+    &-center {
+      display: inline-block;
+      height: 100%;
+      padding: 0.1rem 0;
+      flex: 1 1;
+    }
+
+    &-right {
+      display: flex;
+      align-items: center;
+      width: @width;
+      height: 100%;
+      padding: 0.1rem 0.2rem;
+      justify-content: flex-end;
+    }
+  }
+
+  &-content {
+    min-height: calc(100vh - 54px);
+
+    .flex;
+    &-left,
+    // &-center,
+    &-right {
+      display: block;
+      flex: none;
+      background-color: @white;
+    }
+
+    &-left {
+      width: @width;
+      border-right: 0.01rem solid @border;
+
+      .tag {
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        margin-bottom: 10px;
+        margin-right: 0;
+        text-align: center;
+
+        &:hover {
+          border: 1px solid @primary;
+          cursor: move;
+        }
+      }
+    }
+
+    &-center {
+      flex: 1 1;
+    }
+
+    &-right {
+      width: @width;
+      border-left: 0.01rem solid @border;
+    }
+  }
+}

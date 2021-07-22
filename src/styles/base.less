@@ -1,5 +1,14 @@
 @padding: 24px;
 
+body {
+  font-size: 14px;
+  color: @black1;
+}
+
+.flex {
+  display: flex;
+}
+
 :global .ant-layout-sider-trigger,
 :global .ant-layout-sider {
   background-color: @white;
@@ -17,4 +26,15 @@
 
 :global #root {
   min-height: 100vh;
+}
+
+:global .ant-card-head-wrapper {
+  &::before {
+    content: '';
+    height: 18px;
+    width: 3px;
+    background: @secondary;
+    display: inline-block;
+    margin-right: 4px;
+  }
 }

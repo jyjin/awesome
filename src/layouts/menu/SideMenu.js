@@ -34,6 +34,12 @@ const SideMenu = () => {
     return <Spin />;
   }
 
+  function handleClick(subMenu) {
+    if (subMenu.path.indexOf('lowcode') > -1) {
+      sessionStorage.setItem('prevPath', location.hash.replace('#', ''));
+    }
+  }
+
   return (
     <Sider
       style={{ minHeight: 'calc(100vh - 60px)' }}
@@ -51,13 +57,16 @@ const SideMenu = () => {
               title={menu.name}
               icon={<Icon type={`${menu.icon}`} />}
             >
-              {menu.children.map((sub) => {
+              {menu?.children?.map((sub) => {
                 return (
                   <Menu.Item
                     key={`${menu.id}_${sub.id}`}
-                    icon={<Icon type={`${menu.icon}`} />}
+                    icon={<Icon type={`${sub.icon}`} />}
                   >
-                    <Link to={sub.path}> {sub.name}</Link>
+                    <Link to={sub.path} onClick={() => handleClick(sub)}>
+                      {' '}
+                      {sub.name}
+                    </Link>
                   </Menu.Item>
                 );
               })}
