@@ -3,11 +3,14 @@
 @width: 260px;
 
 .lc {
+  header.lc-header {
+    background: @gray;
+  }
+
   &-header {
     display: flex;
     height: 0.54rem;
     width: 100%;
-    background: @gray;
     border-bottom: 0.01rem solid @border;
     padding: 0;
 
@@ -17,10 +20,6 @@
       width: @width;
       height: 100%;
       padding: 0.1rem 0.2rem;
-
-      h1 {
-        margin: 0;
-      }
     }
 
     &-center {
