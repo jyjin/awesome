@@ -7,6 +7,7 @@ import { Header } from '@/layouts/header';
 import { useState } from 'react';
 import st from './index.less';
 import classNames from 'classnames';
+import lcStore from '@/stores/lowcodeStore';
 
 const { Content, Footer } = Layout;
 const { IntlProvider } = intls;
@@ -25,7 +26,12 @@ const Index = (props) => {
   const cls = classNames(st['content']);
 
   return (
-    <Provider className="provider" global={globalProps} intls={intls}>
+    <Provider
+      className="provider"
+      global={globalProps}
+      intls={intls}
+      lcStore={lcStore}
+    >
       <IntlProvider
         messages={locale[localeLang]}
         locale={localeLang}

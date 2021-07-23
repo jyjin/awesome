@@ -53,14 +53,26 @@ export default [
   },
   {
     id: 3,
-    path: '/react-dnd',
-    name: 'react-dnd',
+    path: '/mobx',
+    name: 'mobx-react',
     icon: 'appstore',
     children: [
       {
         id: 31,
-        path: '/react-dnd',
-        name: 'react-dnd 拖拽',
+        path: '/mobx',
+        name: 'Mobx示例Hook',
+        icon: 'drag',
+      },
+      {
+        id: 32,
+        path: '/mobx-class',
+        name: 'Mobx示例注解',
+        icon: 'drag',
+      },
+      {
+        id: 33,
+        path: '/mobx-obv',
+        name: 'Mobx示例Observer',
         icon: 'drag',
       },
     ],

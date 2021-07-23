@@ -6,30 +6,31 @@ import { getJyCompos } from '@/pages/lowcode/service';
 import st from './index.less';
 import Center from './Center';
 import classNames from 'classnames';
+import Box from './Box';
+import { inject, observer } from 'mobx-react';
+
 const { TabPane } = Tabs;
 
-function TabContent({ data }) {
-  let tagCls = classNames(st['tag']);
-
-  return (
-    <div
-      style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        padding: '0 20px',
-      }}
-    >
-      {data.map((comp) => {
-        return (
-          <Tag className={tagCls} key={comp.code}>
-            {comp.name}
-          </Tag>
-        );
-      })}
-    </div>
-  );
-}
+const TabContent = inject('lcStore')(
+  observer((props) => {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          padding: '0 20px',
+        }}
+      >
+        {props.data.map((comp) => {
+          return (
+            <Box key={comp.code} name={comp.name} source={comp} {...props} />
+          );
+        })}
+      </div>
+    );
+  }),
+);
 
 const Left = () => {
   const jyCompoRes = useRequest(getJyCompos);
