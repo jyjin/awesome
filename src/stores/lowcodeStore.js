@@ -21,12 +21,26 @@ function _remove(arrs, id) {
 }
 
 const Store = observable({
+  current: {},
   sections: _sections,
 
-  addSection(section) {
-    debugger;
-    this.sections.push(section);
+  selectSection(id) {
+    this.current['field'] = null;
+    this.current['section'] = id;
+    this.current = { ...this.current };
+  },
+
+  selectField(id) {
+    this.current['field'] = id;
+  },
+
+  addSection() {
+    const id = this.sections[this.sections.length - 1].id + 1;
+    const newSection = { id, name: `区域${id}`, cols: 1, fields: [] };
+    this.sections.push(newSection);
     this.sections = [...this.sections];
+    // 新增的默认选中
+    this.selectSection(id);
   },
 
   removeSection(sectionId) {

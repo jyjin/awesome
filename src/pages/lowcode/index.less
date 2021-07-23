@@ -74,13 +74,33 @@
       flex: 1 1;
 
       :global .ant-card-bordered {
+        &:hover {
+          border: 1px solid @primary;
+        }
         margin: 20px 20px 0;
         border-color: @border;
       }
 
       .drag-to {
         :global .ant-card-bordered {
-          border: 1px dashed @primary;
+          border: 1px dashed rgb(0, 195, 255);
+        }
+      }
+
+      .selected {
+        border: 1px solid @primary;
+      }
+
+      .add-btn {
+        &::before {
+          content: '';
+          background: @white;
+          width: 10px;
+          height: 10px;
+          position: absolute;
+          left: 5px;
+          top: 5px;
+          z-index: -1;
         }
       }
     }
