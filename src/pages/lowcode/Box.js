@@ -32,18 +32,19 @@ const setting = {
     const item = monitor.getItem();
     const dropResult = monitor.getDropResult();
     console.log('drag target == ', props.source);
-    console.log('drag to == ', toJS(dropResult.data));
+    console.log('drag to == ', toJS(dropResult.section));
 
     let id = 1;
-    if (dropResult.data.fields.length) {
-      id = dropResult.data.fields[dropResult.data.fields.length - 1].id + 1;
+    if (dropResult.section.fields.length) {
+      id =
+        dropResult.section.fields[dropResult.section.fields.length - 1].id + 1;
     }
 
     const field = {
       id,
       ...props.source,
     };
-    props.lcStore.addField(dropResult.data.id, field);
+    props.lcStore.addField(dropResult.section.id, field);
   },
 };
 const fn = (connect, monitor) => ({

@@ -14,7 +14,7 @@ const Icon = (props) => {
 
 Icon.propTypes = {
   type: PropTypes.string.isRequired,
-  size: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
+  // size: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
   color: PropTypes.string,
 };
 

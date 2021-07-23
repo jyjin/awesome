@@ -1,4 +1,5 @@
 import { observable } from 'mobx';
+import { toJS } from 'mobx';
 
 const _sections = [
   {
@@ -35,7 +36,11 @@ const Store = observable({
 
   addField(sectionId, field) {
     _find(this.sections, sectionId).fields.push(field);
+    _find(this.sections, sectionId).fields = [
+      ..._find(this.sections, sectionId).fields,
+    ];
     this.sections = [...this.sections];
+    console.log(toJS(this.sections));
   },
 
   removeField(sectionId, fieldId) {

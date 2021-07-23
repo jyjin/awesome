@@ -5,10 +5,12 @@ import { Icon } from '@/components';
 import { DropTarget } from 'react-dnd';
 import DragBox from './Section';
 import { inject, observer } from 'mobx-react';
+import { toJS } from 'mobx';
 import st from './index.less';
 
 const Center = inject('lcStore')(
   observer((props) => {
+    console.log('center update == ', toJS(props.lcStore.sections));
     return (
       <Layout className={st['lc-content-center']}>
         <Card
@@ -36,7 +38,8 @@ const Center = inject('lcStore')(
             <DragBox
               allowedDropEffect="move"
               name={section.name}
-              data={section}
+              id={section.id}
+              section={section}
             />
           );
         })}
