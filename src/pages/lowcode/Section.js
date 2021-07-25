@@ -3,6 +3,7 @@ import { Divider, Button, Card, Space, Tag } from 'antd';
 import { history } from 'umi';
 import { Icon } from '@/components';
 import { DropTarget } from 'react-dnd';
+import Field from '@/pages/lowcode/Field';
 import st from './index.less';
 import { inject, observer } from 'mobx-react';
 import { toJS } from 'mobx';
@@ -22,6 +23,10 @@ const Section = inject('lcStore')(
     function handleSelectSection() {
       props.lcStore.selectSection(props.section.id);
     }
+
+    const moveCard = (dragIndex, hoverIndex) => {
+      props.lcStore.sortField(props.section.id, dragIndex, hoverIndex);
+    };
 
     const isSelected = props.section.id === props.lcStore.current['section'];
 
@@ -50,6 +55,7 @@ const Section = inject('lcStore')(
       color: '#8c8c8c',
       textAlign: 'center',
     };
+
     return (
       <Card
         className={rootCls}
@@ -59,18 +65,15 @@ const Section = inject('lcStore')(
         onClick={handleSelectSection}
       >
         {props.section.fields.length ? null : <Tag style={_st_tag}></Tag>}
-        <Space style={{ display: 'flex', flexWrap: 'wrap' }}>
-          {' '}
-          {props.section.fields.map((field) => (
-            <Tag style={_st_tag}>{field.name}</Tag>
+        <Space direction={'vertical'} style={{ width: '100%' }}>
+          {props.section.fields.map((field, index) => (
+            <Field {...props} index={index} field={field} moveCard={moveCard} />
           ))}
         </Space>
         {isSelected ? (
           <div style={_st} className={st['add-btn']} onClick={handleAdd}>
             {' '}
-            <Icon type="plus-circle-fill" size={20} color="#2196f3">
-              ADD
-            </Icon>
+            <Icon type="plus-circle-fill" size={20} color="#2196f3" />{' '}
           </div>
         ) : null}
       </Card>

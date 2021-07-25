@@ -61,6 +61,21 @@ const Store = observable({
     _remove(_find(this.sections, sectionId).fields, fieldId);
     this.sections = [...this.sections];
   },
+
+  sortField(sectionId, fromIndex, toIndex) {
+    const _section = _find(this.section, sectionId);
+    _section.splice(toIndex, 1);
+    if (fromIndex < toIndex) {
+      _section.splice(to, 1, _section[fromIndex]);
+      _section.splice(fromIndex, 1);
+    } else {
+      _section.splice(to, 1, _section[fromIndex]);
+      _section.splice(fromIndex + 1, 1);
+    }
+    const index = this.section.findIndex((item) => item.id === sectionId);
+    this.section[index] = _section;
+    this.sections = [...this.sections];
+  },
 });
 
 export default Store;
