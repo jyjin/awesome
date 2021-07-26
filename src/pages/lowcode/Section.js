@@ -8,6 +8,8 @@ import st from './index.less';
 import { inject, observer } from 'mobx-react';
 import { toJS } from 'mobx';
 import classNames from 'classnames';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 const Section = inject('lcStore')(
   observer((props) => {
@@ -56,6 +58,7 @@ const Section = inject('lcStore')(
       textAlign: 'center',
     };
 
+    // console.log('jjjjjjjjjj === ', toJS(props.section.fields))
     return (
       <Card
         className={rootCls}

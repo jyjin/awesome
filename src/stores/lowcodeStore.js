@@ -63,17 +63,15 @@ const Store = observable({
   },
 
   sortField(sectionId, fromIndex, toIndex) {
-    const _section = _find(this.section, sectionId);
-    _section.splice(toIndex, 1);
-    if (fromIndex < toIndex) {
-      _section.splice(to, 1, _section[fromIndex]);
-      _section.splice(fromIndex, 1);
-    } else {
-      _section.splice(to, 1, _section[fromIndex]);
-      _section.splice(fromIndex + 1, 1);
-    }
-    const index = this.section.findIndex((item) => item.id === sectionId);
-    this.section[index] = _section;
+    let _fields = _find(this.sections, sectionId).fields;
+    _fields = toJS(_fields);
+    const _target = _fields[fromIndex];
+    console.log('hahah 0 === ', fromIndex, toIndex, _fields, _target);
+    debugger;
+    _fields.splice(fromIndex, 1);
+    _fields.splice(toIndex, 0, _target);
+    const index = this.sections.findIndex((item) => item.id === sectionId);
+    this.sections[index].fields = [..._fields];
     this.sections = [...this.sections];
   },
 });
