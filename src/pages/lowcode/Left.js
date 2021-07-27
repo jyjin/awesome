@@ -8,6 +8,7 @@ import Center from './Center';
 import classNames from 'classnames';
 import Box from './Box';
 import { inject, observer } from 'mobx-react';
+import _data from '../../../mock/jy-components/jy-components';
 
 const { TabPane } = Tabs;
 
@@ -66,7 +67,10 @@ const TabContent = inject('lcStore')(
 );
 
 const Left = () => {
-  const jyCompoRes = useRequest(getJyCompos);
+  let jyCompoRes = useRequest(getJyCompos);
+  if (process.env.NODE_ENV === 'production') {
+    jyCompoRes.data = _data;
+  }
 
   useEffect(() => {}, [jyCompoRes.data]);
 

@@ -66,8 +66,7 @@ const Store = observable({
     let _fields = _find(this.sections, sectionId).fields;
     _fields = toJS(_fields);
     const _target = _fields[fromIndex];
-    console.log('hahah 0 === ', fromIndex, toIndex, _fields, _target);
-    debugger;
+    // console.log('hahah 0 === ', fromIndex, toIndex, _fields, _target);
     _fields.splice(fromIndex, 1);
     _fields.splice(toIndex, 0, _target);
     const index = this.sections.findIndex((item) => item.id === sectionId);
