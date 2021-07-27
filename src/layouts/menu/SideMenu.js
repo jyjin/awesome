@@ -22,12 +22,12 @@ const SideMenu = () => {
     refreshDeps: [],
   });
 
-  if (process.env.NODE_ENV === 'production') {
-    menuApi.data = menuData;
-  }
-
   useEffect(() => {
-    menuApi.run();
+    if (process.env.NODE_ENV === 'production') {
+      menuApi.data = menuData;
+    } else {
+      menuApi.run();
+    }
     return () => {
       console.log('[ Side Menu ] unmount !');
     };
