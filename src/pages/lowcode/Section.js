@@ -8,8 +8,7 @@ import st from './index.less';
 import { inject, observer } from 'mobx-react';
 import { toJS } from 'mobx';
 import classNames from 'classnames';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
+import { ReactSortable } from 'react-sortablejs';
 
 const Section = inject('lcStore')(
   observer((props) => {
@@ -26,8 +25,8 @@ const Section = inject('lcStore')(
       props.lcStore.selectSection(props.section.id);
     }
 
-    const moveCard = (dragIndex, hoverIndex) => {
-      props.lcStore.sortField(props.section.id, dragIndex, hoverIndex);
+    const moveCard = (fields) => {
+      props.lcStore.sortField(props.section.id, fields);
     };
 
     const isSelected = props.section.id === props.lcStore.current['section'];
@@ -58,7 +57,6 @@ const Section = inject('lcStore')(
       textAlign: 'center',
     };
 
-    // console.log('jjjjjjjjjj === ', toJS(props.section.fields))
     return (
       <Card
         className={rootCls}
@@ -67,12 +65,22 @@ const Section = inject('lcStore')(
         title={props.name}
         onClick={handleSelectSection}
       >
+        {/* 没有内容时，展示一个默认字段块 */}
         {props.section.fields.length ? null : <Tag style={_st_tag}></Tag>}
-        <Space direction={'vertical'} style={{ width: '100%' }}>
-          {props.section.fields.map((field, index) => (
-            <Field {...props} index={index} field={field} moveCard={moveCard} />
+        {/* 排序字段 */}
+        <ReactSortable
+          animation={200}
+          list={props.section.fields}
+          setList={moveCard}
+          ghostClass={st['sortable-ghost']} // Class name for the drop placeholder
+          chosenClass={st['sortable-chosen']} // Class name for the chosen item
+          dragClass={st['sortable-drag']} // Class name for the dragging item
+        >
+          {props.section.fields.map((field) => (
+            <Field {...props} field={field} />
           ))}
-        </Space>
+        </ReactSortable>
+        {/* 选中展示+号，新增区域 */}
         {isSelected ? (
           <div style={_st} className={st['add-btn']} onClick={handleAdd}>
             {' '}
@@ -85,14 +93,12 @@ const Section = inject('lcStore')(
 );
 
 const DragBox = (props) => {
-  const { canDrop, isOver, allowedDropEffect, connectDropTarget } = props;
-  console.log('isOVer == ', isOver);
-  const cls = classNames({
-    [st['drag-to']]: isOver,
-  });
+  const { isOver, connectDropTarget } = props;
+  const cls = classNames({ [st['drag-to']]: isOver });
   return connectDropTarget(
     <div className={cls}>
-      <Section {...props} />
+      {' '}
+      <Section {...props} />{' '}
     </div>,
   );
 };

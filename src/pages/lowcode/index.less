@@ -72,19 +72,25 @@
 
     &-center {
       flex: 1 1;
+      padding: 20px 20px;
 
       :global .ant-card-bordered {
-        &:hover {
-          border: 1px solid @primary;
-        }
-        margin: 20px 20px 0;
+        // &:hover {
+        //   border: 1px solid @primary;
+        // }
         border-color: @border;
       }
 
-      .drag-to {
-        :global .ant-card-bordered {
-          border: 1px dashed rgb(0, 195, 255);
-        }
+      .sortable-ghost {
+        border: 1px solid @border;
+      }
+
+      .sortable-chosen {
+        // border: 1px dashed @primary;
+      }
+
+      .sortable-drag {
+        border: 1px solid @primary;
       }
 
       .selected {
@@ -101,13 +107,6 @@
           left: 5px;
           top: 5px;
           z-index: -1;
-        }
-      }
-
-      .compo {
-        border: 1px solid @border;
-        &:hover {
-          border: 1px dashed @primary;
         }
       }
     }

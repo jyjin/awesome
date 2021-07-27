@@ -6,17 +6,27 @@ import { DropTarget } from 'react-dnd';
 import DragBox from './Section';
 import { inject, observer } from 'mobx-react';
 import { toJS } from 'mobx';
+import { ReactSortable } from 'react-sortablejs';
 import st from './index.less';
 
 const Center = inject('lcStore')(
   observer((props) => {
-    console.log('center update == ', toJS(props.lcStore.sections));
+    // console.log('center update == ', toJS(props.lcStore.sections));
+
+    const moveCard = (sections) => {
+      // 修复最后一个往前拖动会有undefined的bug
+      const _sections = sections.filter((v) => v !== undefined);
+      props.lcStore.sortSection(_sections);
+    };
+
+    const SpaceRow = () => <div style={{ width: '100%', height: 24 }}></div>;
+
     return (
       <Layout className={st['lc-content-center']}>
         <Card
           size="small"
           title="视图操作按钮"
-          style={{ margin: '20px 20px 0', borderColor: '#d8d8d8' }}
+          style={{ borderColor: '#d8d8d8' }}
         >
           <Tag
             style={{
@@ -33,16 +43,29 @@ const Center = inject('lcStore')(
             你可以拖动左侧组件完成设置
           </Tag>
         </Card>
-        {props.lcStore.sections.map((section) => {
-          return (
-            <DragBox
-              allowedDropEffect="move"
-              name={section.name}
-              id={section.id}
-              section={section}
-            />
-          );
-        })}
+        <SpaceRow />
+        <ReactSortable
+          animation={200}
+          list={props.lcStore.sections}
+          setList={moveCard}
+          ghostClass={st['sortable-ghost']} // Class name for the drop placeholder
+          chosenClass={st['sortable-chosen']} // Class name for the chosen item
+          dragClass={st['sortable-drag']} // Class name for the dragging item
+        >
+          {props.lcStore.sections.map((section) => {
+            return (
+              <>
+                <DragBox
+                  allowedDropEffect="move"
+                  name={section.name}
+                  id={section.id}
+                  section={section}
+                />
+                <SpaceRow key={'row' + section.id} />
+              </>
+            );
+          })}
+        </ReactSortable>
       </Layout>
     );
   }),
