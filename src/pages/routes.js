@@ -12,6 +12,8 @@ export default [
       { path: '/mobx-class', component: '@/pages/mobx-class/index' },
       { path: '/mobx-obv', component: '@/pages/mobx-obv/index' },
       { path: '/dnd-sort', component: '@/pages/dnd-sort/index' },
+      { path: '/react-sortable', component: '@/pages/react-sort/index' },
+      { path: '/react-sortjs', component: '@/pages/react-sortjs/index' },
       {
         path: '/content-download',
         component: '@/pages/content-download/index',

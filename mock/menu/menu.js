@@ -86,7 +86,19 @@ export default [
       {
         id: 41,
         path: '/dnd-sort',
-        name: '拖拽排序',
+        name: '拖拽排序 react-dnd',
+        icon: 'database',
+      },
+      {
+        id: 43,
+        path: '/react-sortable',
+        name: '拖拽排序 react-sortable',
+        icon: 'database',
+      },
+      {
+        id: 44,
+        path: '/react-sortjs',
+        name: '拖拽排序 react-sortablejs',
         icon: 'database',
       },
     ],

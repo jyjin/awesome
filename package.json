@@ -35,11 +35,15 @@
     "react-dnd": "^14.0.2",
     "react-dnd-html5-backend": "^14.0.0",
     "react-intl": "^5.18.1",
+    "react-sortable": "^2.0.0",
+    "react-sortablejs": "^6.0.0",
+    "sortablejs": "^1.14.0",
     "umi": "^3.4.4"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/sortablejs": "^1.10.7",
     "@umijs/test": "^3.4.4",
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.0",
