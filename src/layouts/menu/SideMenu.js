@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Layout, Menu, Spin } from 'antd';
 import { Link, useRequest } from 'umi';
 import { Icon } from '@/components';
+import menuData from '../../../mock/menu/menu';
 import './index.less';
 import axios from 'axios';
 const { Sider } = Layout;
@@ -10,14 +11,20 @@ const { SubMenu } = Menu;
 const SideMenu = () => {
   const [collapsed, setCollapsed] = useState(true);
   const [menuData, setMenuData] = useState([]);
-
+  // console.log('env1 === ', process.env.RUN_TYPE);
+  // console.log('env1 === ',JYJIN);
+  // console.log('env1 === ',process.env.J_TYPE);
   const getMenuService = () => {
     return axios.get('/api/menus');
   };
-  const menuApi = useRequest(() => getMenuService(), {
+  let menuApi = useRequest(() => getMenuService(), {
     manual: true,
     refreshDeps: [],
   });
+
+  if (process.env.NODE_ENV === 'production') {
+    menuApi.data = menuData;
+  }
 
   useEffect(() => {
     menuApi.run();
