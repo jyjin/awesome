@@ -12,9 +12,9 @@ import { ReactSortable } from 'react-sortablejs';
 
 const Section = inject('lcStore')(
   observer((props) => {
-    console.log('section props == ', props);
-    console.log('section section == ', toJS(props.section));
-    console.log('section lc current == ', toJS(props.lcStore.current));
+    // console.log('section props == ', props);
+    // console.log('section section == ', toJS(props.section));
+    // console.log('section lc current == ', toJS(props.lcStore.current));
 
     function handleAdd(e) {
       e.stopPropagation();
@@ -27,10 +27,6 @@ const Section = inject('lcStore')(
 
     const moveField = (fields) => {
       props.lcStore.sortField(props.section.id, fields);
-    };
-
-    const onAdd = (evt) => {
-      debugger;
     };
 
     const isSelected = props.section.id === props.lcStore.current['section'];
@@ -98,11 +94,11 @@ const Section = inject('lcStore')(
 
 const DragBox = (props) => {
   const { isOver, connectDropTarget } = props;
-  const cls = classNames({ [st['drag-to']]: isOver });
+  const cls = classNames(st['section-box'], { [st['drag-to']]: isOver });
   return connectDropTarget(
     <div className={cls}>
-      <Section {...props} />
-    </div>,
+      <Section {...props} ></Section>
+    </div>
   );
 };
 

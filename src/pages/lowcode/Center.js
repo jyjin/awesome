@@ -19,10 +19,6 @@ const Center = inject('lcStore')(
       props.lcStore.sortSection(_sections);
     };
 
-    const onAdd = (evt) => {
-      debugger;
-    };
-
     const SpaceRow = () => <div style={{ width: '100%', height: 24 }}></div>;
 
     return (
@@ -52,8 +48,6 @@ const Center = inject('lcStore')(
           animation={200}
           list={props.lcStore.sections}
           setList={moveCard}
-          onAdd={onAdd}
-          ghostClass={st['sortable-ghost']} // Class name for the drop placeholder
           chosenClass={st['sortable-chosen']} // Class name for the chosen item
           dragClass={st['sortable-drag']} // Class name for the dragging item
         >
