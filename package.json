@@ -3,7 +3,7 @@
   "scripts": {
     "start": "umi dev",
     "build": "UMI_ENV=cloud umi build",
-    "release": "git checkout -b release-1.0.0 & npm run build",
+    "release": "git checkout -b release-1.0.4 & npm run build",
     "copy": "rm -rf src mock config *.js *.ts *.md *.yml & cp dist/* ./",
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
