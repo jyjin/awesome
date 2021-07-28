@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Select, Layout } from 'antd';
+import { Link } from 'umi';
 import PropTypes from 'prop-types';
 import './index.less';
 const { Header } = Layout;
@@ -14,7 +15,10 @@ const MyHeader = (props) => {
 
   return (
     <Header className="header">
-      <div className="logo"> JYJIN</div>
+      <Link className="logo" to="/">
+        {' '}
+        JYJIN
+      </Link>
       <Select
         className="local"
         width={250}
