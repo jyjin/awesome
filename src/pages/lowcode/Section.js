@@ -25,8 +25,12 @@ const Section = inject('lcStore')(
       props.lcStore.selectSection(props.section.id);
     }
 
-    const moveCard = (fields) => {
+    const moveField = (fields) => {
       props.lcStore.sortField(props.section.id, fields);
+    };
+
+    const onAdd = (evt) => {
+      debugger;
     };
 
     const isSelected = props.section.id === props.lcStore.current['section'];
@@ -69,9 +73,10 @@ const Section = inject('lcStore')(
         {props.section.fields.length ? null : <Tag style={_st_tag}></Tag>}
         {/* 排序字段 */}
         <ReactSortable
+          group={'field-group'}
           animation={200}
           list={props.section.fields}
-          setList={moveCard}
+          setList={moveField}
           ghostClass={st['sortable-ghost']} // Class name for the drop placeholder
           chosenClass={st['sortable-chosen']} // Class name for the chosen item
           dragClass={st['sortable-drag']} // Class name for the dragging item
@@ -83,8 +88,7 @@ const Section = inject('lcStore')(
         {/* 选中展示+号，新增区域 */}
         {isSelected ? (
           <div style={_st} className={st['add-btn']} onClick={handleAdd}>
-            {' '}
-            <Icon type="plus-circle-fill" size={20} color="#2196f3" />{' '}
+            <Icon type="plus-circle-fill" size={20} color="#2196f3" />
           </div>
         ) : null}
       </Card>
@@ -97,8 +101,7 @@ const DragBox = (props) => {
   const cls = classNames({ [st['drag-to']]: isOver });
   return connectDropTarget(
     <div className={cls}>
-      {' '}
-      <Section {...props} />{' '}
+      <Section {...props} />
     </div>,
   );
 };
