@@ -103,4 +103,18 @@ export default [
       },
     ],
   },
+  {
+    id: 5,
+    path: '/hook',
+    name: 'React Hook',
+    icon: 'trademark',
+    children: [
+      {
+        id: 51,
+        path: '/context',
+        name: 'React hook context使用',
+        icon: 'trademark',
+      },
+    ],
+  },
 ];

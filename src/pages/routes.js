@@ -14,6 +14,7 @@ export default [
       { path: '/dnd-sort', component: '@/pages/dnd-sort/index' },
       { path: '/react-sortable', component: '@/pages/react-sort/index' },
       { path: '/react-sortjs', component: '@/pages/react-sortjs/index' },
+      { path: '/context', component: '@/pages/context/index' },
       {
         path: '/content-download',
         component: '@/pages/content-download/index',
