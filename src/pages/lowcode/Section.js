@@ -29,7 +29,9 @@ const Section = inject('lcStore')(
       props.lcStore.sortField(props.section.id, fields);
     };
 
-    const isSelected = props.section.id === props.lcStore.current['section'];
+    const isSelected =
+      props.section.id === props.lcStore.current['section'] &&
+      props.lcStore.current['field'] === null;
 
     const rootCls = classNames({
       [st['section']]: true,
@@ -97,8 +99,8 @@ const DragBox = (props) => {
   const cls = classNames(st['section-box'], { [st['drag-to']]: isOver });
   return connectDropTarget(
     <div className={cls}>
-      <Section {...props} ></Section>
-    </div>
+      <Section {...props}></Section>
+    </div>,
   );
 };
 

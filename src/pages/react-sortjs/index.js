@@ -28,7 +28,7 @@ export default () => {
       <h4>
         亮点：可以定制拖拽的虚线样式,{' '}
         <a
-          href="https://hub.fastgit.org/SortableJS/Sortable#options"
+          href="https://github.com/SortableJS/Sortable#options"
           target="_blank"
         >
           戳我API
