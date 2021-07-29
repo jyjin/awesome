@@ -21,7 +21,8 @@
     "config/**/*",
     ".umirc.ts",
     "typings.d.ts",
-    "config"
+    "config",
+    "jest.config.js"
   ],
   "exclude": [
     "node_modules",

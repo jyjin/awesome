@@ -13,7 +13,7 @@ const JsonViewer = ({ json }) => {
 };
 
 JsonViewer.propTypes = {
-  json: PropTypes.string,
+  json: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 export default JsonViewer;

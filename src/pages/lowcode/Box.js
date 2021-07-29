@@ -10,7 +10,14 @@ const Box = ({ name, key, isDragging, connectDragSource }) => {
 
   return connectDragSource(
     <div key={key} className={tagCls} style={{ opacity }}>
-      <Tag style={{ width: '100%', height: '100%', lineHeight: '30px' }}>
+      <Tag
+        style={{
+          width: '100%',
+          height: '100%',
+          lineHeight: '30px',
+          fontSize: 14,
+        }}
+      >
         {name}
       </Tag>
     </div>,

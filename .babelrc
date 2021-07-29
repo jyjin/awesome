@@ -1,0 +1,11 @@
+// 这里纯粹是为了单元测试。umi自带babel配置，项目运行及编译与这里无关
+{
+  "presets": [
+    [
+      "babel-preset-react-app", // react语法
+      {
+        "runtime": "automatic" // 将React注册到全局，避免Hook写法的的页面没有引入React会报错
+      }
+    ]
+  ]
+}

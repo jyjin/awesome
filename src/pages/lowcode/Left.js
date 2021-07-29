@@ -14,30 +14,6 @@ const { TabPane } = Tabs;
 
 const TabContent = inject('lcStore')(
   observer((props) => {
-    function begin(props) {
-      return {
-        name: props.name,
-        ...props,
-      };
-    }
-
-    function end(props, monitor) {
-      const dropResult = monitor.getDropResult();
-      console.log('drag target == ', props.source);
-      console.log('drag to == ', toJS(dropResult.section));
-      let id = 1;
-      if (dropResult.section.fields.length) {
-        id =
-          dropResult.section.fields[dropResult.section.fields.length - 1].id +
-          1;
-      }
-      const field = {
-        id,
-        ...props.source,
-      };
-      props.lcStore.addField(dropResult.section.id, field);
-    }
-
     return (
       <div
         style={{
@@ -50,15 +26,6 @@ const TabContent = inject('lcStore')(
         {props.data.map((comp) => {
           return (
             <Box key={comp.code} name={comp.name} source={comp} {...props} />
-            // <DragFrom
-            //   key={comp.code}
-            //   begin={begin}
-            //   end={end}
-            // >
-            //   <Tag style={{ width: '100%', height: '100%', lineHeight: '30px' }}>
-            //     {comp.name}
-            //   </Tag>
-            // </DragFrom>
           );
         })}
       </div>

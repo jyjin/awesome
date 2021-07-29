@@ -16,7 +16,6 @@ const MyHeader = (props) => {
   return (
     <Header className="header">
       <Link className="logo" to="/">
-        {' '}
         JYJIN
       </Link>
       <Select
