@@ -45,6 +45,7 @@ const Center = inject('lcStore')(
         </Card>
         <SpaceRow />
         <ReactSortable
+          key={'sections'}
           animation={200}
           list={props.lcStore.sections}
           setList={moveCard}
@@ -55,12 +56,13 @@ const Center = inject('lcStore')(
             return (
               <>
                 <DragBox
+                  key={'dragbox-' + section.id.toString()}
                   allowedDropEffect="move"
                   name={section.name}
                   id={section.id}
                   section={section}
                 />
-                <SpaceRow key={'row' + section.id} />
+                <SpaceRow key={'row' + section.id.toString()} />
               </>
             );
           })}

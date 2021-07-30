@@ -80,7 +80,11 @@ const Section = inject('lcStore')(
           dragClass={st['sortable-drag']} // Class name for the dragging item
         >
           {props.section.fields.map((field) => (
-            <Field {...props} field={field} />
+            <Field
+              key={'field-' + field.id.toString()}
+              {...props}
+              field={field}
+            />
           ))}
         </ReactSortable>
         {/* 选中展示+号，新增区域 */}

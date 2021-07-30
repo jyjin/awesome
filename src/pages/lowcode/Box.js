@@ -9,7 +9,7 @@ const Box = ({ name, key, isDragging, connectDragSource }) => {
   let tagCls = classNames(st['tag']);
 
   return connectDragSource(
-    <div key={key} className={tagCls} style={{ opacity }}>
+    <div className={tagCls} style={{ opacity }}>
       <Tag
         style={{
           width: '100%',

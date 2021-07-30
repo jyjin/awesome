@@ -1,5 +1,5 @@
 import React from 'react';
-import { SideMenu } from './index';
+import { default as SideMenu } from './SideMenu';
 import Enzyme from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 

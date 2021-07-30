@@ -11,5 +11,5 @@ module.exports = {
     '^@@/(.*)$': '<rootDir>/src/.umi/$1',
     '\\.(css|less)$': 'identity-obj-proxy',
   },
-  // moduleDirectories: ['node_modules']
+  moduleDirectories: ['node_modules'],
 };
