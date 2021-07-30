@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Layout, Menu, Spin } from 'antd';
-import { Link, useRequest } from 'umi';
+import { Link, useRequest, history } from 'umi';
 import { Icon } from '@/components';
 import _menuData from '../../../mock/menu/menu';
 import './index.less';
@@ -44,6 +44,10 @@ const SideMenu = () => {
     }
   }
 
+  function handleFirstMenu(e) {
+    history.push(menuData[e.key - 1].path);
+  }
+
   return (
     <Sider
       style={{ minHeight: 'calc(100vh - 60px)' }}
@@ -59,6 +63,7 @@ const SideMenu = () => {
             <SubMenu
               key={menu.id}
               title={menu.name}
+              onTitleClick={(e) => handleFirstMenu(e)}
               icon={<Icon type={`${menu.icon}`} />}
             >
               {menu?.children?.map((sub) => {
@@ -66,9 +71,9 @@ const SideMenu = () => {
                   <Menu.Item
                     key={`${menu.id}_${sub.id}`}
                     icon={<Icon type={`${sub.icon}`} />}
+                    title={sub.name}
                   >
                     <Link to={sub.path} onClick={() => handleClick(sub)}>
-                      {' '}
                       {sub.name}
                     </Link>
                   </Menu.Item>

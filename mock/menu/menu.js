@@ -1,7 +1,7 @@
 export default [
   {
     id: 1,
-    path: '/',
+    path: '/me',
     name: '技术测试',
     icon: 'trophy',
     children: [
@@ -105,7 +105,7 @@ export default [
   },
   {
     id: 5,
-    path: '/hook',
+    path: '/context',
     name: 'React Hook',
     icon: 'trademark',
     children: [
