@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Layout, Menu, Spin } from 'antd';
-import { Link, useRequest, history } from 'umi';
 import { Icon } from '@/components';
+import { Link, useRequest, history } from 'umi';
+// import { Link, history } from 'umi';
+// import { useRequest } from '@/.umi/plugin-request/request';
 import _menuData from '../../../mock/menu/menu';
 import './index.less';
 import axios from 'axios';
