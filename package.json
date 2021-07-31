@@ -8,8 +8,8 @@
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "jest": "jest",
-    "test": "umi-test",
-    "test:coverage": "umi-test --coverage"
+    "test": "umi-test --watch",
+    "test:coverage": "umi-test  --watch --coverage"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -43,13 +43,14 @@
     "umi": "^3.4.4"
   },
   "devDependencies": {
-    "@types/jest": "^25.1.2",
+    "@types/jest": "^26.0.24",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/sortablejs": "^1.10.7",
     "@umijs/test": "^3.4.4",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
     "babel-preset-react-app": "^10.0.0",
+    "jest": "^27.0.6",
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.0",
     "react": "^17.0.2",

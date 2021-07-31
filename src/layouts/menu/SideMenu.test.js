@@ -13,6 +13,6 @@ jest.mock('umi', () => {
     },
   };
 });
-test(`组件SideMenu应该有1个子元素`, () => {
+test(`组件SideMenu应该有1个子元素 `, () => {
   expect(shallow(<SideMenu />)).toHaveLength(1);
 });

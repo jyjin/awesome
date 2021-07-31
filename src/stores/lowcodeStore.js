@@ -56,7 +56,7 @@ const Store = observable({
       ..._find(this.sections, sectionId).fields,
     ];
     this.sections = [...this.sections];
-    console.log(toJS(this.sections));
+    // console.log(toJS(this.sections));
   },
 
   removeField(sectionId, fieldId) {
