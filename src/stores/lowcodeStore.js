@@ -36,6 +36,19 @@ const Store = observable({
     this.current = { ...this.current };
   },
 
+  getField() {
+    if (!this.current['field']) return null;
+    let section = _find(this.sections, this.current['section']);
+    let field = _find(section.fields, this.current['field']);
+    return { ...field };
+  },
+
+  getSection() {
+    if (!this.current['section']) return null;
+    let section = _find(this.sections, this.current['section']);
+    return { ...section };
+  },
+
   addSection() {
     const id = this.sections[this.sections.length - 1].id + 1;
     const newSection = { id, name: `区域${id}`, cols: 1, fields: [] };

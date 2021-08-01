@@ -1,17 +1,16 @@
-import { useEffect, useState } from 'react';
-import { Layout, Button, Divider, Space } from 'antd';
-import { history } from 'umi';
-import { Icon } from '@/components';
+import { Layout } from 'antd';
+import { inject, observer } from 'mobx-react';
+import FieldSetting from './FieldSetting';
+import SectionSetting from './SectionSetting';
 import st from './index.less';
 
-const { Header, Content } = Layout;
+const Right = observer((props) => {
+  const isField = !!props.lcStore.current['field'];
+  return (
+    <Layout className={st['lc-content-right']}>
+      {isField ? <FieldSetting {...props} /> : <SectionSetting {...props} />}
+    </Layout>
+  );
+});
 
-const Right = () => {
-  function goBack() {
-    const path = sessionStorage.getItem('prevPath') || '/';
-    history.push(path);
-  }
-  return <Layout className={st['lc-content-right']}>right</Layout>;
-};
-
-export default Right;
+export default inject('lcStore')(Right);
