@@ -117,4 +117,18 @@ export default [
       },
     ],
   },
+  {
+    id: 6,
+    path: '/wrench',
+    name: '在线工具',
+    icon: 'trademark',
+    children: [
+      {
+        id: 51,
+        path: '/babel',
+        name: 'babel在线转义',
+        icon: 'bold',
+      },
+    ],
+  },
 ];

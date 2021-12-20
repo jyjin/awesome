@@ -14,3 +14,6 @@ const Right = observer((props) => {
 });
 
 export default inject('lcStore')(Right);
+<p>你好，金
+  建业
+</p>
