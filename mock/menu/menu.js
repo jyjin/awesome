@@ -35,6 +35,12 @@ export default [
         name: 'hook inject',
         icon: 'trophy',
       },
+      {
+        id: 16,
+        path: '/image',
+        name: '图片转化',
+        icon: 'trophy',
+      },
     ],
   },
   {
