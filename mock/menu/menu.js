@@ -41,6 +41,12 @@ export default [
         name: '图片转化',
         icon: 'trophy',
       },
+      {
+        id: 17,
+        path: '/svg',
+        name: 'OCR选框',
+        icon: 'trophy',
+      },
     ],
   },
   {

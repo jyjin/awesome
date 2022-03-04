@@ -17,6 +17,7 @@ export default [
       { path: '/context', component: '@/pages/context/index' },
       { path: '/babel', component: '@/pages/babel/index' },
       { path: '/image', component: '@/pages/image/index' },
+      { path: '/svg', component: '@/pages/svg/index' },
       {
         path: '/content-download',
         component: '@/pages/content-download/index',
