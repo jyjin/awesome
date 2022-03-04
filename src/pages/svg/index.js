@@ -28,8 +28,6 @@ const CanvasRectangle = observer((props) => {
     console.log('bound == ', bound)
     console.log('rect == ', rect)
 
-
-
     setBound(bound)
     setStyle({
       zIndex: 99,
@@ -58,17 +56,18 @@ const CanvasRectangle = observer((props) => {
     json.lines.map(item => {
       data.push({
         text: item.text,
-        polygons: [
-          item.char_polygons[0][0],
-          item.char_polygons[0][1],
-          item.char_polygons[0][6],
-          item.char_polygons[0][7],
-          item.char_polygons[item.char_polygons.length - 1][4],
-          item.char_polygons[item.char_polygons.length - 1][5],
-          item.char_polygons[item.char_polygons.length - 1][2],
-          item.char_polygons[item.char_polygons.length - 1][3],
+        polygons: item.position,
+        // polygons: [
+        //   item.char_polygons[0][0],
+        //   item.char_polygons[0][1],
+        //   item.char_polygons[0][6],
+        //   item.char_polygons[0][7],
+        //   item.char_polygons[item.char_polygons.length - 1][4],
+        //   item.char_polygons[item.char_polygons.length - 1][5],
+        //   item.char_polygons[item.char_polygons.length - 1][2],
+        //   item.char_polygons[item.char_polygons.length - 1][3],
 
-        ]
+        // ]
       })
     })
     console.log('data before == ', data)
