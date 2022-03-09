@@ -18,6 +18,7 @@ export default [
       { path: '/babel', component: '@/pages/babel/index' },
       { path: '/image', component: '@/pages/image/index' },
       { path: '/svg', component: '@/pages/svg/index' },
+      { path: '/hook-ref', component: '@/pages/hook-ref/index' },
       {
         path: '/content-download',
         component: '@/pages/content-download/index',

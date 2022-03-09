@@ -47,6 +47,12 @@ export default [
         name: 'OCR选框',
         icon: 'trophy',
       },
+      {
+        id: 18,
+        path: '/hook-ref',
+        name: '父子Ref',
+        icon: 'trophy',
+      },
     ],
   },
   {
