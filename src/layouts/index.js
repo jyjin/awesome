@@ -47,7 +47,7 @@ const Index = (props) => {
             <Content className={cls}> {props.children} </Content>
             <Footer style={{ textAlign: 'center' }}>
               {' '}
-              Copyright ©2021 古金. All rights reserved. Created by Awesome
+              Copyright ©2021-2022 古金. All rights reserved. Created by Awesome
               JyJin
             </Footer>
           </Content>

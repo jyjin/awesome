@@ -2,7 +2,7 @@ export default [
   {
     id: 1,
     path: '/me',
-    name: '技术测试',
+    name: '技术研究',
     icon: 'trophy',
     children: [
       {
@@ -15,7 +15,7 @@ export default [
         id: 12,
         path: '/home',
         name: 'react-intl 标签用法',
-        icon: 'font-colors',
+        icon: 'font-size',
       },
       {
         id: 13,
@@ -32,32 +32,39 @@ export default [
       {
         id: 15,
         path: '/inject',
-        name: 'hook inject',
+        name: 'React hook inject',
         icon: 'trophy',
       },
-      {
-        id: 16,
-        path: '/image',
-        name: '图片转化',
-        icon: 'trophy',
-      },
+      
       {
         id: 17,
-        path: '/svg',
-        name: 'OCR选框',
-        icon: 'trophy',
+        path: '/mobx',
+        name: 'Mobx示例之Hook',
+        icon: 'file-markdown-fill',
       },
       {
         id: 18,
-        path: '/hook-ref',
-        name: '父子Ref',
-        icon: 'trophy',
+        path: '/mobx-class',
+        name: 'Mobx示例之注解',
+        icon: 'meh',
       },
       {
         id: 19,
-        path: '/cropper',
-        name: '图片裁剪',
-        icon: 'trophy',
+        path: '/mobx-obv',
+        name: 'Mobx示例之Observer',
+        icon: 'monitor',
+      },
+      {
+        id: 20,
+        path: '/hook-ref',
+        name: '父子Ref',
+        icon: 'deploymentunit',
+      },
+      {
+        id: 21,
+        path: '/context',
+        name: 'React hook context使用',
+        icon: 'trademark',
       },
     ],
   },
@@ -78,26 +85,26 @@ export default [
   {
     id: 3,
     path: '/mobx',
-    name: 'mobx-react',
-    icon: 'appstore',
+    name: '图片相关',
+    icon: 'image',
     children: [
       {
         id: 31,
-        path: '/mobx',
-        name: 'Mobx示例Hook',
-        icon: 'smile',
+        path: '/image',
+        name: '图片转化',
+        icon: 'image-fill',
       },
       {
         id: 32,
-        path: '/mobx-class',
-        name: 'Mobx示例注解',
-        icon: 'meh',
+        path: '/svg',
+        name: '图片识别',
+        icon: 'OCR',
       },
       {
         id: 33,
-        path: '/mobx-obv',
-        name: 'Mobx示例Observer',
-        icon: 'filesync',
+        path: '/cropper',
+        name: '图片裁剪',
+        icon: 'scissor',
       },
     ],
   },
@@ -105,19 +112,19 @@ export default [
     id: 4,
     path: '/dnd-sort',
     name: 'React Dnd',
-    icon: 'drag',
+    icon: 'orderedlist',
     children: [
       {
         id: 41,
         path: '/dnd-sort',
         name: '拖拽排序 react-dnd',
-        icon: 'database',
+        icon: 'orderedlist',
       },
       {
         id: 43,
         path: '/react-sortable',
         name: '拖拽排序 react-sortable',
-        icon: 'database',
+        icon: 'drag',
       },
       {
         id: 44,
@@ -129,20 +136,6 @@ export default [
   },
   {
     id: 5,
-    path: '/context',
-    name: 'React Hook',
-    icon: 'trademark',
-    children: [
-      {
-        id: 51,
-        path: '/context',
-        name: 'React hook context使用',
-        icon: 'trademark',
-      },
-    ],
-  },
-  {
-    id: 6,
     path: '/wrench',
     name: '在线工具',
     icon: 'trademark',

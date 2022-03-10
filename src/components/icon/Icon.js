@@ -1,7 +1,8 @@
 import { createFromIconfontCN } from '@ant-design/icons';
 import PropTypes from 'prop-types';
+// https://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=2677882
 const IconFont = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_2677882_5rpv8e0z9w5.js',
+  scriptUrl: '//at.alicdn.com/t/font_2677882_tzcg0p99ksf.js',
 });
 
 const Icon = (props) => {
