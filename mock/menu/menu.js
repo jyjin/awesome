@@ -53,6 +53,12 @@ export default [
         name: '父子Ref',
         icon: 'trophy',
       },
+      {
+        id: 19,
+        path: '/cropper',
+        name: '图片裁剪',
+        icon: 'trophy',
+      },
     ],
   },
   {

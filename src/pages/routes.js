@@ -19,6 +19,7 @@ export default [
       { path: '/image', component: '@/pages/image/index' },
       { path: '/svg', component: '@/pages/svg/index' },
       { path: '/hook-ref', component: '@/pages/hook-ref/index' },
+      { path: '/cropper', component: '@/pages/cropper/index' },
       {
         path: '/content-download',
         component: '@/pages/content-download/index',
