@@ -6,7 +6,11 @@ import { useEffect, useRef, useState } from 'react';
 // import imgSrc from './wechat.png';
 import { Loading } from '@/components';
 import ocr from './ocr'
+import _ from 'lodash'
 import { v4 as uuidv4 } from 'uuid';
+import VConsole from 'vconsole';
+const vConsole = new VConsole();
+const dis = 0.2 // 单位缩放比率
 
 
 const CanvasRectangle = observer((props) => {
@@ -17,10 +21,17 @@ const CanvasRectangle = observer((props) => {
   const [bound, setBound] = useState(null)
   const [data, setData] = useState([])
   const [json, setJson] = useState({})
+  const [collpase, setCollpase] = useState(false)
+  const [scale, setScale] = useState(1)
+  const [sd, setSd] = useState()
   const imgRef = useRef()
   const inputRef = useRef()
   const canvasRef = useRef()
   const svgRef = useRef()
+
+  useEffect(() => {
+    setScale(1)
+  }, [imgSrc])
 
   function onload() {
     let bound = imgRef.current.getBoundingClientRect()
@@ -30,7 +41,7 @@ const CanvasRectangle = observer((props) => {
 
     setBound(bound)
     setStyle({
-      zIndex: 99,
+      // zIndex: 99,
       width: bound.width,
       height: bound.height,
       // background: '#2196f3',
@@ -108,7 +119,6 @@ const CanvasRectangle = observer((props) => {
   }
 
   function onReupload() {
-    debugger
     inputRef.current.onClick();
   }
 
@@ -128,45 +138,128 @@ const CanvasRectangle = observer((props) => {
 
   console.log('data render == ', data, data?.filter(v => v.checked))
 
+  function onWheel(e) {
+
+    if (~navigator.userAgent.toLowerCase().indexOf('iphone')) {
+      return
+    }
+
+    console.log(e.deltaY > 0 ? '向下' : '向上')
+    if (e.deltaY > 0) {
+      let _scale = scale + dis / 10
+      console.log('放大 == ', _scale)
+      setScale(_scale)
+    } else {
+      let _scale = scale - dis / 10
+      console.log('缩小 == ', _scale)
+      if (_scale < 0) {
+        _scale = 0
+      }
+      setScale(_scale)
+    }
+  }
+
+  const [scaling, setScaling] = useState(false)
+
+  function onTouchStart(e) {
+    console.log('touch fingures == ', e?.touches?.length)
+    if (e.touches.length === 2) {
+      setScaling(true)
+      let sd = Math.hypot(
+        e.touches[0].pageX - e.touches[1].pageX,
+        e.touches[0].pageY - e.touches[1].pageY
+      )
+      setSd(sd)
+      console.log('start dis == ', sd)
+    }
+  }
+
+  function onTouchMove(e) {
+    if (e.touches.length === 2 && scaling) {
+      let _sd = Math.hypot(
+        e.touches[0].pageX - e.touches[1].pageX,
+        e.touches[0].pageY - e.touches[1].pageY
+      )
+      if (sd !== undefined) {
+        let isScaleBig = _sd > sd
+        if (isScaleBig) {
+          let _scale = scale + dis / 10
+          console.log('双指放大 == ', _scale)
+          setScale(_scale)
+        } else {
+          let _scale = scale - dis / 10
+          console.log('双指缩小 == ', _scale)
+          if (_scale < 0) {
+            _scale = 0
+          }
+          setScale(_scale)
+        }
+        setSd(_sd)
+      }
+    }
+  }
+
+  function onTouchEnd(e) {
+    if (e.touches.length === 2) {
+      let sd = Math.hypot(
+        e.touches[0].pageX - e.touches[1].pageX,
+        e.touches[0].pageY - e.touches[1].pageY
+      )
+      console.log('end dis == ', sd)
+    }
+    setScaling(false)
+  }
+
   return (
     <Space direction="vertical" style={{ width: '100%' }}>
       {loading ? <Loading tip='上传识别中...' /> : null}
       <div className={st['ocr']} >
+        {collpase ?
+          <div className={st['result-box-collpase']} onClick={() => { setCollpase(false) }}></div>
+          :
+          <div className={st['result-box']}>
+            <div>
+              <Button type='primary' onClick={onSelectAll}>全选</Button>
+              <Button type='primary' onClick={() => setCollpase(true)}>收起</Button>
+              {imgSrc ?
+                <input type='file' multiple='multiple' accept='image/jpeg,image/jpg,image/png,image/gif' ref={inputRef} onChange={onChange} />
+                : null
+              }
+            </div>
+            <div className={st['result-list']}>
+              {data?.filter(v => v.checked).map(item => {
+                return <div key={item.id}>{item.text}</div>
+              })}
+            </div>
 
-        <div className={st['result-box']}>
-          <div>
-            <Button type='primary' onClick={onSelectAll}>全选</Button>
-            {imgSrc ?
-              <input type='file' multiple='multiple' accept='image/jpeg,image/jpg,image/png,image/gif' ref={inputRef} onChange={onChange} />
-              : null
-            }
           </div>
-          <div className={st['result-list']}>
-            {data?.filter(v => v.checked).map(item => {
-              return <div key={item.id}>{item.text}</div>
-            })}
-          </div>
-
-        </div>
+        }
         <div className={st['ocr-box']}>
-          {imgSrc ? <img src={imgSrc} ref={imgRef} onLoad={onload} /> :
-            <input type='file' multiple='multiple' accept='image/jpeg,image/jpg,image/png,image/gif' ref={inputRef} onChange={onChange} />
-          }
-          {/* <canvas id="myCanvas" ref={canvasRef} style={style} /> */}
-          <svg ref={svgRef} style={style}>
-            {data?.map(item => {
-              return <polygon
-                key={item.id}
-                data-text={item.text}
-                points={item.polygonsText}
-                className={item.checked ? `${st['py']} ${st['py-checked']}` : st['py']}
-                onClick={() => onSelect(item)}
-              ></polygon>
-            })}
-          </svg>
+          <div className={st['ocr-content']}
+            // PC 滚轮缩放
+            onWheel={onWheel}
+            // 移动端双指缩放 -> 用同局域网的无线网访问，只能手机测试。浏览器模拟器监听不到双指
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}>
+            {imgSrc ? <img src={imgSrc} ref={imgRef} onLoad={onload} style={{ transform: `scale(${scale})`, transition: 'all cubic-bezier(0.5, 0.5, 0.5, 0.5) 0s' }} /> :
+              <input type='file' multiple='multiple' accept='image/jpeg,image/jpg,image/png,image/gif' ref={inputRef} onChange={onChange} />
+            }
+            <svg ref={svgRef} style={{ ...style, transform: `scale(${scale})`, transition: 'all cubic-bezier(0.5, 0.5, 0.5, 0.5) 0s' }}>
+              {data?.map(item => {
+                return <polygon
+                  key={item.id}
+                  data-text={item.text}
+                  points={item.polygonsText}
+                  className={item.checked ? `${st['py']} ${st['py-checked']}` : st['py']}
+                  onClick={() => onSelect(item)}
+                ></polygon>
+              })}
+            </svg>
+          </div>
         </div>
       </div>
-    </Space>
+    </Space >
   );
 });
 

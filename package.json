@@ -46,7 +46,8 @@
     "react-sortablejs": "^6.0.0",
     "sortablejs": "^1.14.0",
     "umi": "^3.4.4",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "vconsole": "^3.12.1"
   },
   "devDependencies": {
     "@types/jest": "^26.0.24",
