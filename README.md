@@ -1,22 +1,70 @@
-# umi project
+<h1 align="center">Welcome to Awesome JYJIN 👋</h1>
+<p>
+  
+  <a href="https://www.npmjs.com/package/nuwa-boot" target="_blank">
+    <img alt="Version" src="https://img.shields.io/badge/Version-1.0.5-blue">
+  </a>
+  <a href="https://www.npmjs.com/package/nuwa-boot" target="_blank">
+    <img alt="Version" src="https://img.shields.io/badge/Npm-8.5.3-brightgreen">
+  </a>
+  <a href="https://www.npmjs.com/package/nuwa-boot" target="_blank">
+    <img alt="Version" src="https://img.shields.io/badge/Node-12.22.1-purple">
+  </a>
+  <a href="#" target="_blank">
+    <img alt="License: ISC" src="https://img.shields.io/badge/License-ISC-yellow.svg" />
+  </a>
+</p>
 
-## Getting Started
 
-Install dependencies,
+# 🏠 [Homepage](https://github.com/jyjin/nuwa-boot#readme)
 
-```bash
-$ yarn or npm i
+Some real skills research, recording here to demo.
 
-```
+一大波技术验证，留存例子存在这里
 
-Start the dev server,
 
-```bash
-$ yarn start or npm start
-```
+## Requirements
 
-Run test
+请确认适配或兼容一下开发环境
 
-```bash
-$ yarn run test or npm run test
-```
+Please ensure your have the environments that like following requirements.
+
+  - `node >= 12.22.1`
+  - `npm >= 8.5.3`
+## Installation
+
+`npm install`
+
+依赖包安装
+
+You need install some denpendencies before running.
+
+## Usage
+
+启动项目
+
+`npm start`
+
+### CLI API
+| Name | 描述 |Description |
+| -- | -- | -- |
+|  `npm install` | 安装依赖包 | Install denpendency packages |
+|  `npm run build` | 编译项目 | Build the project |
+|  `npm run release` | 编译到形如`release-x.x.x`格式的分支 | Release to a git branch `release-x.x.x` |
+|  `npm run copy`  | 调整项目目录适配线上静态网站发布 | Refact structure to fit deploy to online |
+
+
+
+
+
+## 👤 Author
+
+   **jyjin 金建业**
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/jyjin/awesome/issues). You can also take a look at the [contributing guide].
+
+## Show your support
+
+Give a ⭐️  if this project helped you!
