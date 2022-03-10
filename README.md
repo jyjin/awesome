@@ -1,13 +1,13 @@
 <h1 align="center">Welcome to Awesome JYJIN 👋</h1>
 <p>
   
-  <a href="https://www.npmjs.com/package/nuwa-boot" target="_blank">
+  <a href="https://github.com/jyjin/awesome#readme" target="_blank">
     <img alt="Version" src="https://img.shields.io/badge/Version-1.0.5-blue">
   </a>
-  <a href="https://www.npmjs.com/package/nuwa-boot" target="_blank">
+  <a href="https://github.com/jyjin/awesome#readme" target="_blank">
     <img alt="Version" src="https://img.shields.io/badge/Npm-8.5.3-brightgreen">
   </a>
-  <a href="https://www.npmjs.com/package/nuwa-boot" target="_blank">
+  <a href="https://github.com/jyjin/awesome#readme" target="_blank">
     <img alt="Version" src="https://img.shields.io/badge/Node-12.22.1-purple">
   </a>
   <a href="#" target="_blank">
@@ -16,11 +16,11 @@
 </p>
 
 
-# 🏠 [Homepage](https://github.com/jyjin/nuwa-boot#readme)
+# 🏠 [Homepage](https://github.com/jyjin/awesome#readme)
 
-Some real skills research, recording here to demo.
+Some real skills research, recording here to demo, take a online view at 👉👉👉[Awesome JYJIN](https://jyjin.github.io/awesome/#/)
 
-一大波技术验证，留存例子存在这里
+一大波技术验证，留存例子存在这里，线上预览戳这里👉👉👉[Awesome JYJIN](https://jyjin.github.io/awesome/#/)
 
 
 ## Requirements
@@ -31,6 +31,7 @@ Please ensure your have the environments that like following requirements.
 
   - `node >= 12.22.1`
   - `npm >= 8.5.3`
+
 ## Installation
 
 `npm install`
