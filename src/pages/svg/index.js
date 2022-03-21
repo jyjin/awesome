@@ -10,7 +10,7 @@ import _ from 'lodash'
 import { v4 as uuidv4 } from 'uuid';
 import VConsole from 'vconsole';
 const vConsole = new VConsole();
-const dis = 0.2 // 单位缩放比率
+const dis = 0.3 // 单位缩放比率
 
 
 const CanvasRectangle = observer((props) => {
@@ -136,7 +136,6 @@ const CanvasRectangle = observer((props) => {
     ctx.fillRect(25, 10, 150, 80)
   }
 
-  console.log('data render == ', data, data?.filter(v => v.checked))
 
   function onWheel(e) {
 
@@ -157,6 +156,31 @@ const CanvasRectangle = observer((props) => {
       }
       setScale(_scale)
     }
+  }
+
+  const [moving, setMoving] = useState(false)
+  const [point, setPoint] = useState(undefined)
+  const [translate, setTranslate] = useState([0, 0])
+
+  console.log('data render == ', data, data?.filter(v => v.checked))
+
+
+  function onMouseDown(e) {
+    console.log(translate)
+    setMoving(true)
+  }
+
+  function onMouseMove(e) {
+    if (moving && point) {
+      console.log(e.clientX, e.pageX)
+      let tx = e.clientX - point[0]
+      let ty = e.clientY - point[1]
+      setTranslate([tx, ty])
+    }
+  }
+
+  function onMouseUp() {
+    setMoving(false)
   }
 
   const [scaling, setScaling] = useState(false)
@@ -238,14 +262,17 @@ const CanvasRectangle = observer((props) => {
           <div className={st['ocr-content']}
             // PC 滚轮缩放
             onWheel={onWheel}
+            onMouseDown={onMouseDown}
+            onMouseMove={onMouseMove}
+            onMouseUp={onMouseUp}
             // 移动端双指缩放 -> 用同局域网的无线网访问，只能手机测试。浏览器模拟器监听不到双指
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}>
-            {imgSrc ? <img src={imgSrc} ref={imgRef} onLoad={onload} style={{ transform: `scale(${scale})`, transition: 'all cubic-bezier(0.5, 0.5, 0.5, 0.5) 0s' }} /> :
+            {imgSrc ? <img src={imgSrc} ref={imgRef} onLoad={onload} style={{ transform: `scale(${scale})  translateX(${translate[0]}px) translateY(${translate[1]}px)`, transition: 'all cubic-bezier(0.5, 0.5, 0.5, 0.5) 0s' }} /> :
               <input type='file' multiple='multiple' accept='image/jpeg,image/jpg,image/png,image/gif' ref={inputRef} onChange={onChange} />
             }
-            <svg ref={svgRef} style={{ ...style, transform: `scale(${scale})`, transition: 'all cubic-bezier(0.5, 0.5, 0.5, 0.5) 0s' }}>
+            <svg ref={svgRef} style={{ ...style, transform: `scale(${scale}) translateX(${translate[0]}px) translateY(${translate[1]}px)`, transition: 'all cubic-bezier(0.5, 0.5, 0.5, 0.5) 0s' }}>
               {data?.map(item => {
                 return <polygon
                   key={item.id}

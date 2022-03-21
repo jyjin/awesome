@@ -1,6 +1,6 @@
 module.exports = async function ocr({
-  accessKey = '78baf470be345366bd85b8f9b18bee80',
-  secretKey = 'a282de559d6f22d8c49555010f9b98e6',
+  accessKey = 'c3b7bcef448ca566f4f7313799405925',
+  secretKey = '6709d94e05dfd716fb311ba98b64c01c',
   fileData,
 }) {
 
@@ -27,6 +27,7 @@ module.exports = async function ocr({
         if (ocrResult?.code === 200) {
           resolve(ocrResult)
         } else {
+          alert(ocrResult.code + ':' + ocrResult.message)
           console.error('fetch ocr error == ', ocrResult)
           reject(ocrResult)
         }
