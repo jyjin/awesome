@@ -66,6 +66,18 @@ export default [
         name: 'React hook context使用',
         icon: 'trademark',
       },
+      {
+        id: 22,
+        path: '/quill',
+        name: 'React Quill使用',
+        icon: 'trademark',
+      },
+      {
+        id: 23,
+        path: '/qrcode',
+        name: '二维码生成',
+        icon: 'scan-code',
+      },
     ],
   },
   {
