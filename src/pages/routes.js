@@ -21,6 +21,7 @@ export default [
       { path: '/hook-ref', component: '@/pages/hook-ref/index' },
       { path: '/cropper', component: '@/pages/cropper/index' },
       { path: '/quill', component: '@/pages/quill/index' },
+      { path: '/ckeditor', component: '@/pages/ckeditor/index' },
       { path: '/qrcode', component: '@/pages/qrcode/index' },
       {
         path: '/content-download',

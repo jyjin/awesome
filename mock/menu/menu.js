@@ -74,6 +74,12 @@ export default [
       },
       {
         id: 23,
+        path: '/ckeditor',
+        name: 'Ckeditor 使用',
+        icon: 'trademark',
+      },
+      {
+        id: 24,
         path: '/qrcode',
         name: '二维码生成',
         icon: 'scan-code',
