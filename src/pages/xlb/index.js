@@ -14,7 +14,8 @@ export default function XLB() {
   const [line, setLine] = useState('#000')
   const [inside, setInside] = useState('#fff')
   const [text, setText] = useState('#fff')
-  const [txt, setTxt] = useState('')
+  const [txt, setTxt] = useState('哈哈哈')
+  const [num, setNum] = useState(1)
 
   function onChangeBg(e) {
     setBg(e.currentTarget.value)
@@ -38,6 +39,11 @@ export default function XLB() {
 
   function onChangeTxt(e) {
     setTxt(e.currentTarget.value)
+    clearOpen()
+  }
+
+  function onChangeNum(e) {
+    setNum(e.currentTarget.value)
     clearOpen()
   }
 
@@ -104,9 +110,9 @@ export default function XLB() {
   }
 
   function renderShape(stop = 0) {
-    if (stop > 1) return
+    if (stop > num) return
     return (
-      <>
+      <div className={st['xlb-shape']}>
         <div className={st['xlb-rect']} style={{ backgroundColor: line }}>
           <div className={st['xlb-rect-inner']} style={{ backgroundColor: inside }}></div>
         </div>
@@ -114,11 +120,11 @@ export default function XLB() {
           <div className={st['xlb-tx-inner']} style={{ borderRightColor: inside }}></div>
         </div>
         <div className={st['xlb-children']}>
-          {/* {renderShape(stop + 1)} */}
+          {renderShape(stop + 1)}
         </div>
         <div className={st['xlb-radius']} style={{ borderRightColor: line }}>
         </div>
-      </>
+      </div>
     )
   }
 
@@ -134,23 +140,26 @@ export default function XLB() {
       <div className={st['ctl']}>
         <Switch checkedChildren='隐藏辅助线' unCheckedChildren='显示辅助线' checked={open} onChange={setOpen}></Switch>
         <div className={st['ctl-row']}>
-          <Input placeholder='背景色' onChange={onChangeBg} value={bg} /><div onClick={() => setOpens(1)}>拾色器</div>
+          <Input placeholder='背景色' onChange={onChangeBg} value={bg} /><div title='拾色器' onClick={() => setOpens(1)}>背景色</div>
           {open1 && <SketchPicker color={bg} onChangeComplete={handleChangeComplete1} />}
         </div>
         <div className={st['ctl-row']}>
-          <Input placeholder='线条色' onChange={onChangeLine} value={line} /><div onClick={() => setOpens(2)}>拾色器</div>
+          <Input placeholder='线条色' onChange={onChangeLine} value={line} /><div title='拾色器' onClick={() => setOpens(2)}>线条色</div>
           {open2 && <SketchPicker color={line} onChangeComplete={handleChangeComplete2} />}
         </div>
         <div className={st['ctl-row']}>
-          <Input placeholder='填充色' onChange={onChangeInside} value={inside} /><div onClick={() => setOpens(3)}>拾色器</div>
+          <Input placeholder='填充色' onChange={onChangeInside} value={inside} /><div title='拾色器' onClick={() => setOpens(3)}>填充色</div>
           {open3 && <SketchPicker color={inside} onChangeComplete={handleChangeComplete3} />}
         </div>
         <div className={st['ctl-row']}>
-          <Input placeholder='填充色' onChange={onChangeText} value={text} /><div onClick={() => setOpens(4)}>拾色器</div>
+          <Input placeholder='广告文本色' onChange={onChangeText} value={text} /><div title='拾色器' onClick={() => setOpens(4)}>广告文本色</div>
           {open3 && <SketchPicker color={text} onChangeComplete={handleChangeComplete4} />}
         </div>
         <div className={st['ctl-row']}>
-          <Input placeholder='文本' onChange={onChangeTxt} value={txt} />
+          <Input placeholder='广告内容' onChange={onChangeTxt} value={txt} /><div>广告内容</div>
+        </div>
+        <div className={st['ctl-row']}>
+          <Input type={'number'} placeholder='衍生' onChange={onChangeNum} value={num} /><div>衍生数</div>
         </div>
       </div>
     </div>

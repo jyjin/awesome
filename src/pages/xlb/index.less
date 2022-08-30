@@ -17,7 +17,7 @@
   .x1 {
     position: absolute;
     height: 600px;
-    border: 1px dashed red;
+    border: 1px dashed green;
     left: 200px;
     z-index: 999;
     transform: rotate(-45deg);
@@ -34,7 +34,7 @@
   .y1 {
     position: absolute;
     height: 600px;
-    border: 1px dashed blue;
+    border: 1px dashed white;
     left: 200px;
     z-index: 999;
     transform: rotate(45deg);
@@ -49,12 +49,21 @@
     align-items: center;
   }
 
+  &-shape{
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    left: 59px;
+  }
+
   &-rect {
     position: relative;
     background-color: black;
-    width: 15%;
-    margin-left: 22%;
-    height: 35.4%;
+    width: 22%;
+    margin-left: 10%;
+    height: 52.4%;
     z-index: 90;
     border-right: none;
     box-shadow: none;
@@ -72,7 +81,7 @@
     position: relative;
     margin-left: -8px;
     width: 22%;
-    height: 70%;
+    height: 102%;
     border-top: 70px solid transparent;
     border-right: 88px solid black;
     border-bottom: 70px solid transparent;
@@ -84,8 +93,8 @@
     border-top: 54px solid transparent;
     border-right: 68px solid white;
     border-bottom: 54px solid transparent;
-    height: 198px;
-    width: 67px;
+    height: 204px;
+    width: 69px;
     margin: -29px 0 0 0px;
   }
 
@@ -95,7 +104,7 @@
     height: 200px;
     border-radius: 100%;
     border-right: 20px solid black;
-    left: 100px;
+    left: 40px;
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
   }
@@ -104,14 +113,21 @@
     color: white;
     position: absolute;
     font-weight: 600;
-    right: 32px;
+    right: 40px;
     width: 40px;
     font-size: 32px;
     font-family: cursive;
+    writing-mode: vertical-lr;
+    text-indent: 16px;
+    letter-spacing: 16px;
   }
 
   &-children{
-    transform: scale(0.1);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform: scale(0.2);
+    left: 16%;
   }
 }
 
@@ -132,6 +148,7 @@
     > div {
       margin-left: 20px;
       min-width: 120px;
+      cursor: pointer;
     }
   }
 }
