@@ -1,0 +1,145 @@
+.xlb {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .x {
+    position: absolute;
+    width: 600px;
+    margin-left: -100px;
+    border: 1px dashed red;
+    top: 200px;
+    z-index: 999;
+  }
+
+  .x1 {
+    position: absolute;
+    height: 600px;
+    border: 1px dashed red;
+    left: 200px;
+    z-index: 999;
+    transform: rotate(-45deg);
+  }
+
+  .y {
+    position: absolute;
+    height: 600px;
+    border: 1px dashed blue;
+    left: 200px;
+    z-index: 999;
+  }
+
+  .y1 {
+    position: absolute;
+    height: 600px;
+    border: 1px dashed blue;
+    left: 200px;
+    z-index: 999;
+    transform: rotate(45deg);
+  }
+
+  &-box {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background-color: #07ac46;
+    display: flex;
+    align-items: center;
+  }
+
+  &-rect {
+    position: relative;
+    background-color: black;
+    width: 15%;
+    margin-left: 22%;
+    height: 35.4%;
+    z-index: 90;
+    border-right: none;
+    box-shadow: none;
+  }
+
+  &-rect-inner {
+    position: absolute;
+    background-color: white;
+    width: calc(100% - 20px);
+    height: calc(100% - 40px);
+    margin: 20px 0 20px 20px;
+  }
+
+  &-tx {
+    position: relative;
+    margin-left: -8px;
+    width: 22%;
+    height: 70%;
+    border-top: 70px solid transparent;
+    border-right: 88px solid black;
+    border-bottom: 70px solid transparent;
+    z-index: 80;
+  }
+
+  &-tx-inner {
+    position: absolute;
+    border-top: 54px solid transparent;
+    border-right: 68px solid white;
+    border-bottom: 54px solid transparent;
+    height: 198px;
+    width: 67px;
+    margin: -29px 0 0 0px;
+  }
+
+  &-radius {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    border-right: 20px solid black;
+    left: 100px;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+  }
+
+  &-text{
+    color: white;
+    position: absolute;
+    font-weight: 600;
+    right: 32px;
+    width: 40px;
+    font-size: 32px;
+    font-family: cursive;
+  }
+
+  &-children{
+    transform: scale(0.1);
+  }
+}
+
+
+.ctl {
+  margin-top: 40px;
+
+
+  &-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 400px;
+    margin-top: 20px;
+
+
+    > div {
+      margin-left: 20px;
+      min-width: 120px;
+    }
+  }
+}
+
+
+:global .sketch-picker{
+  position: absolute;
+  top: 0;
+  right: -160px;
+  z-index: 999;
+}

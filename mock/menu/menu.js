@@ -150,6 +150,12 @@ export default [
         name: '拖拽排序 react-sortablejs',
         icon: 'database',
       },
+      {
+        id: 45,
+        path: '/xlb',
+        name: '小喇叭',
+        icon: 'database',
+      },
     ],
   },
   {

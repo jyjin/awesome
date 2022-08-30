@@ -23,6 +23,7 @@ export default [
       { path: '/quill', component: '@/pages/quill/index' },
       { path: '/ckeditor', component: '@/pages/ckeditor/index' },
       { path: '/qrcode', component: '@/pages/qrcode/index' },
+      { path: '/xlb', component: '@/pages/xlb/index' },
       {
         path: '/content-download',
         component: '@/pages/content-download/index',
