@@ -153,7 +153,7 @@ export default function XLB() {
         </div>
         <div className={st['ctl-row']}>
           <Input placeholder='广告文本色' onChange={onChangeText} value={text} /><div title='拾色器' onClick={() => setOpens(4)}>广告文本色</div>
-          {open3 && <SketchPicker color={text} onChangeComplete={handleChangeComplete4} />}
+          {open4 && <SketchPicker color={text} onChangeComplete={handleChangeComplete4} />}
         </div>
         <div className={st['ctl-row']}>
           <Input placeholder='广告内容' onChange={onChangeTxt} value={txt} /><div>广告内容</div>
