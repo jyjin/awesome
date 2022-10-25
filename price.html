@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .row {
+      display: flex;
+      align-items: center;
+      
+    }
+
+    .row span {
+        display: block;
+        width: 160px;
+    }
+  </style>
+  <script src="./price.js"></script>
+</head>
+<body>
+
+  <div>
+    请输入成本价/件<input id="price" type="number" value='13'>元
+    请输入快递件/每单<input id="deliveryPrice" type="number" value="18">元
+    定价浮动区间<input id="maxOver" type="number" value="15">元
+    捆绑最大件数<input id="maxCount" type="number" value="5">件
+  </div>
+  
+  <h1>综合利润最高</h1>
+  <div id="wrap0"></div>
+  <h1>单件利润最高</h1>
+  <div id="wrap1"></div>
+  <h1>捆绑利润最高</h1>
+  <div id="wrap2"></div>
+  <h1>定价分析</h1>
+  <div><input id='search' type='number'/></div>
+  <div id="wrap3"></div>
+  <script>
+
+    function renderTo(arr, root){
+      arr.map(item=>{
+        if(item[4] < 0 || item[5] < 0) return;
+
+        var span0 = document.createElement('span')
+        var span1 = document.createElement('span')
+        var span2 = document.createElement('span')
+        var span3 = document.createElement('span')
+        var span4 = document.createElement('span')
+        var span5 = document.createElement('span')
+        span0.innerHTML=`单件定价${item[0]}元`
+        span1.innerHTML=`捆绑销售${item[1]}件`
+        span2.innerHTML=`每件优惠${item[2]}元`
+        span3.innerHTML=`此时定价${item[3]}元`
+        span4.innerHTML=`单件利润${item[4]}元`
+        span5.innerHTML=`捆绑利润${item[5]}元`
+        var div = document.createElement('div')
+        div.setAttribute('class', 'row')
+        div.append(span0)
+        div.append(span1)
+        div.append(span2)
+        div.append(span3)
+        div.append(span4)
+        div.append(span5)
+        document.getElementById(root).append(div)
+      });
+    }
+
+    function clearRender(){
+      document.getElementById('wrap0').innerHTML = ''
+      document.getElementById('wrap1').innerHTML = ''
+      document.getElementById('wrap2').innerHTML = ''
+      document.getElementById('wrap3').innerHTML = ''
+    }
+
+    /**
+     * arr price.js返回的数组
+     * size 保留排序的个数
+     * target 需要排序的项目所对应的角标数字；或者，角标数字的数组，表示多项求和后排序
+     */
+    function getMaxArr(arr, size = 10, target){
+      var maxArr = []
+      while(maxArr.length <= size){
+        var max = 0
+        var maxItem = null
+        arr.map(item => {
+          let tmp = null
+          if(typeof target ==="object"){
+            tmp = item[target[0]] + item[target[1]]
+          }else{
+            tmp = item[target]
+          }
+          if(tmp > max && !maxArr.includes(item)){
+            max = tmp
+            maxItem = item
+          }
+        })
+        maxArr.push(maxItem)
+      }
+      return maxArr
+    }
+
+    function startCalu(){
+      var price = document.getElementById('price').value
+      var deliveryPrice = document.getElementById('deliveryPrice').value
+      var maxOver = document.getElementById('maxOver').value
+      var maxCount = document.getElementById('maxCount').value
+
+      if(price && deliveryPrice && maxOver && maxCount){
+        clearRender();
+        var arr = calu(price, deliveryPrice, maxOver, maxCount);
+        var maxArr = getMaxArr(arr,10,[4,5])
+        var singleMaxArr = getMaxArr(arr,10, 4)
+        var multiMaxArr = getMaxArr(arr,10, 5)
+
+        renderTo(maxArr, 'wrap0')
+        renderTo(singleMaxArr, 'wrap1')
+        renderTo(multiMaxArr, 'wrap2')
+        renderTo(arr, 'wrap3')
+
+      }
+    }
+
+    document.getElementById('price').addEventListener('input',  startCalu)
+    document.getElementById('deliveryPrice').addEventListener('input',  startCalu)
+    document.getElementById('maxOver').addEventListener('input',  startCalu)
+    document.getElementById('maxCount').addEventListener('input',  startCalu)
+    startCalu();
+      
+  </script>
+</body>
+</html>
