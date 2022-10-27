@@ -1,5 +1,5 @@
 
-function calu(takePrice = 40, deliveryPrice = 18, maxOver = 60, maxCount = 5){
+function calu(takePrice = 40, deliveryPrice = 18, maxOver = 60, maxCount = 5, discount = null){
   var p = takePrice*1 // 单价
   var k = deliveryPrice*1 // 快递费
   var o = maxOver*1 // 最大定价浮动区间
@@ -15,6 +15,10 @@ function calu(takePrice = 40, deliveryPrice = 18, maxOver = 60, maxCount = 5){
   for (var n = i; n < i + o; n++) {
     for (var m = 1; m <= s; m++) {
       for (var c = 1; c < i; c++) {
+        if(discount){
+          c = discount
+          i = discount
+        }
         var p1 = m * (n - c)
         var profitSingle = n - k - p
         var profitMult = p1 - m * p - k

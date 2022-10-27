@@ -170,6 +170,12 @@ export default [
         name: 'babel在线转义',
         icon: 'bold',
       },
+      {
+        id: 52,
+        path: '/price',
+        name: '定价分析',
+        icon: 'propertysafety-fill',
+      },
     ],
   },
 ];

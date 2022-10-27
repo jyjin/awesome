@@ -24,6 +24,7 @@ export default [
       { path: '/ckeditor', component: '@/pages/ckeditor/index' },
       { path: '/qrcode', component: '@/pages/qrcode/index' },
       { path: '/xlb', component: '@/pages/xlb/index' },
+      { path: '/price', component: '@/pages/price/index' },
       {
         path: '/content-download',
         component: '@/pages/content-download/index',
