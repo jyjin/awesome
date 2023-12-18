@@ -30,6 +30,8 @@ export default [
         component: '@/pages/content-download/index',
       },
       { path: '/ggeditor', component: '@/pages/ggeditor/index' },
+      { path: '/canvas', component: '@/pages/canvas/index' },
+      { path: '/keybord', component: '@/pages/keybord/index' },
     ],
   },
 ];

@@ -1,0 +1,73 @@
+.content {
+  padding: 0;
+  margin: 0;
+}
+
+:global {
+  .ant-layout-content {
+    main {
+      padding: 0;
+      margin: 0;
+      height: calc(100vh - 60px - 40px);
+    }
+  }
+}
+
+.canvasPaint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  .toolbar,
+  .setting {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    background-color: white;
+    height: 100%;
+    padding: 16px;
+  }
+
+  .toolbar {
+    .font {
+      padding: 5px 16px;
+      border-radius: 5px;
+      border: 1px solid #eee;
+      margin-bottom: 16px;
+      transition: all 0.3s linear;
+      font-size: 14px;
+      text-indent: 0;
+      cursor: pointer;
+
+      &:hover {
+        text-indent: 14px;
+        background-color: #f0f0f0;
+      }
+    }
+  }
+
+  .canvasBox {
+    flex: 1;
+    border: 1px solid #eee;
+    border-width: 0 1px 0 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .canvas {
+    width: 500px;
+    height: 500px;
+    // background-color: white;
+    box-shadow: 3px 3px 3px 0 #f0f0f0;
+    border: 1px solid #fff;
+  }
+
+  :global {
+    li {
+      list-style: none;
+    }
+  }
+}

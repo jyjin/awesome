@@ -35,7 +35,7 @@ export default [
         name: 'React hook inject',
         icon: 'trophy',
       },
-      
+
       {
         id: 17,
         path: '/mobx',
@@ -122,6 +122,18 @@ export default [
         id: 33,
         path: '/cropper',
         name: '图片裁剪',
+        icon: 'scissor',
+      },
+      {
+        id: 34,
+        path: '/canvas',
+        name: 'canvas',
+        icon: 'scissor',
+      },
+      {
+        id: 35,
+        path: '/keybord',
+        name: 'keybord',
         icon: 'scissor',
       },
     ],

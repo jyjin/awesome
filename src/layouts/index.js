@@ -45,7 +45,14 @@ const Index = (props) => {
           {/* 页面 */}
           <Content>
             <Content className={cls}> {props.children} </Content>
-            <Footer style={{ textAlign: 'center' }}>
+            <Footer
+              style={{
+                height: 40,
+                textAlign: 'center',
+                background: '#fff',
+                border: '1px solid #eee',
+              }}
+            >
               {' '}
               Copyright ©2021-2022 古金. All rights reserved. Created by Awesome
               JyJin

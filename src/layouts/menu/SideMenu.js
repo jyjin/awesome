@@ -57,7 +57,11 @@ const SideMenu = () => {
       collapsed={collapsed}
       onCollapse={setCollapsed}
     >
-      <Menu mode="inline" defaultSelectedKeys={['4']}>
+      <Menu
+        mode="inline"
+        defaultSelectedKeys={['4']}
+        style={{ height: '100%' }}
+      >
         {menuData.map((menu) => {
           return (
             <SubMenu

@@ -18,6 +18,7 @@ export default defineConfig({
     'process.env.J_TYPE': 'dev',
     JYJIN: 'jyjin',
   },
+  publicPath: './',
   routes,
   fastRefresh: {},
 });
